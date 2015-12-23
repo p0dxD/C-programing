@@ -1,0 +1,39 @@
+	.file	"testCompiler.c"
+	.section	.rodata
+.LC0:
+	.string	"%d\n"
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB0:
+	.cfi_startproc
+	subq	$24, %rsp
+	.cfi_def_cfa_offset 32
+	movl	%edi, 12(%rsp)
+	movq	%rsi, (%rsp)
+	movl	$0, %eax
+	call	scheme_entry
+	movl	%eax, %esi
+	movl	$.LC0, %edi
+	movl	$0, %eax
+	call	printf
+	movl	$0, %eax
+	addq	$24, %rsp
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE0:
+	.size	main, .-main
+	.globl	scheme_entry
+	.type	scheme_entry, @function
+scheme_entry:
+.LFB1:
+	.cfi_startproc
+	movl	$42, %eax
+	ret
+	.cfi_endproc
+.LFE1:
+	.size	scheme_entry, .-scheme_entry
+	.ident	"GCC: (Ubuntu 5.2.1-22ubuntu2) 5.2.1 20151010"
+	.section	.note.GNU-stack,"",@progbits
