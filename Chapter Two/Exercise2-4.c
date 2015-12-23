@@ -50,6 +50,5 @@ void squeeze2(char s1[], char s2[]){
 int sizeOfSentence(char s[]){
 	int i = 0;
 	while(s[i++] != '\0');
-
 	return --i;//minus the null
 }//ened sizeOfSentence
